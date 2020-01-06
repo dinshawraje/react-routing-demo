@@ -44,10 +44,13 @@ export const EmpDetailsForm: React.FC = () => {
     ]
   };
   const [skillState, setSkillState] = useState([
-    {...blankSkill},
+    blankSkill,
   ]);
   const addSkill = () => {
-    setSkillState([...skillState, {...blankSkill}]);
+    let skills = skillState;
+    skills.push(blankSkill);
+    setSkillState(skills);
+    console.log(JSON.stringify(skills));
   };
   // const handleSkillChange = (e: { target: { dataset: { idx: React.ReactText; }; className: React.ReactText; value: any; }; }) => {
   //   const updatedCats = [...skillState];
@@ -92,28 +95,16 @@ export const EmpDetailsForm: React.FC = () => {
                 <Form.Row key={`Skill-${idx}`}>
                   <Form.Group as={Col} md="6">                
                     <Form.Label htmlFor={skillId} >{`Skill #${idx + 1}`}</Form.Label>
-                    <Form.Control as="select" name={skillId} data-idx={idx} id={skillId} 
-                      className="TechnicalSkills">
-                      <option>Select</option>
-                      <option>React</option>
-                      <option>Angular</option>
-                      <option>Java</option>
-                    </Form.Control>
-                    {/* <Form.Control type="text" placeholder="SkillName" name={skillId} data-idx={idx} id={skillId} 
-                      className="TechnicalSkills" value={skillState[idx].TechnicalSkills} /> */}
+                    <Select options={ blankSkill.technicalSkills } name={skillId} data-idx={idx} id={skillId} 
+                      className="technicalSkills" />
+                    
+                   
                   </Form.Group>
                   <Form.Group as={Col} md="6">  
                     <Form.Label htmlFor={ratingId} >Ratings</Form.Label>
-                    <Form.Control as="select" name={ratingId} data-idx={idx} id={ratingId} 
-                      className="Rating">
-                      <option>0</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                    </Form.Control>
-                    {/* <Form.Control type="text" placeholder="Rating" name={ratingId} data-idx={idx} id={ratingId}
-                      className="Rating" value={skillState[idx].Rating}  />                   */}
+                    <Select options={ blankSkill.rating } name={ratingId} data-idx={idx} id={ratingId}
+                      className="rating" value={skillState[idx].rating} />
+                    
                   </Form.Group>
                 </Form.Row>
               );      
