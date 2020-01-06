@@ -46,12 +46,11 @@ export const EmpDetailsForm: React.FC = () => {
   const [skillState, setSkillState] = useState([
     blankSkill,
   ]);
-  const addSkill = () => {
-    let skills = skillState;
-    skills.push(blankSkill);
-    setSkillState(skills);
-    console.log(JSON.stringify(skills));
-  };
+  const addSkill = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    setSkillState([...skillState, {...blankSkill}]);
+  
+  }
   // const handleSkillChange = (e: { target: { dataset: { idx: React.ReactText; }; className: React.ReactText; value: any; }; }) => {
   //   const updatedCats = [...skillState];
   //   updatedCats[e.target.dataset.idx][e.target.className] = e.target.value;
