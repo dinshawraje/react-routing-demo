@@ -9,12 +9,9 @@ import {Home} from './components/home';
 import { TestEmpForm } from './components/test-emp-form';
 import {EmpDetailsForm} from './components/emp-detail-form';
 
-interface AppProps { }
-interface AppState {
-  name: string;
-}
 
-class App extends Component<AppProps, AppState> {
+
+class App extends Component {
   render() {
     return (
         <Router>
